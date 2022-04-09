@@ -1,0 +1,235 @@
+<!DOCTYPE html>
+<html>
+
+<head>
+    <title>Decoder Zizo web</title>
+
+    <meta charset="UTF-8">
+    <meta name="theme-color" content="#cce5ff">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Amiri:ital@1&family=Cairo&display=swap" rel="stylesheet">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cairo&display=swap" rel="stylesheet">
+    <meta name="google-site-verification" content="97TWGvJ1vYsfRoGtQDgz8TiDo2XHnl8am2vyWdMIIis" />
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+   <link rel="icon" href="logo.jpg">
+   
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css"
+        integrity="sha384-9aIt2nRpC12Uk9gS9baDl411NQApFmC26EwAOH8WgZl5MYYxFfc+NcPb1dKGj7Sk" crossorigin="anonymous">
+    <style>
+
+      body{
+        font-family: 'Amiri', serif;
+        font-family: 'Cairo', sans-serif;
+      }
+        #app {
+            width: 100%;
+            max-width: 100%;
+        }
+
+        #app p {
+            width: 100%;
+            padding: 14px;
+            background: rgb(112, 91, 204);
+            color: white;
+            text-align: center;
+            font-family: sans-serif;
+            font-size: 22px;
+        }
+
+        #app textarea {
+            width: 100%;
+            border: 2px solid rgb(138, 138, 138);
+            outline: red 2px double;
+            border-radius: 14px;
+            min-height: 140px;
+        }
+
+        #app select {
+            width: 100%;
+            padding: 14px;
+            border-radius: 14px;
+            margin-bottom: 14px;
+
+        }
+    </style>
+
+</head>
+
+<body dir="rtl" style="background-color: #cce5ff;">
+    <div class="alert alert-primary" role="alert"> 
+        <h2>Decoder Zizo web</h2>
+      </div>
+
+    <noscript id="ad">
+        <h2>انتباه</h2>
+       <h2 style="background-color: red;"> تطبيقنا الويب لن يعمل بشكل صحيح لديك لان جافا سكريبت 
+        غير مدعوم في متصفح او تم تعطيلها في المتصفح</h1>
+       </noscript>
+
+       <nav class="nav nav-pills nav-fill">
+        <a class="nav-link active" aria-current="page" href="">اعادة تحميل الصفحة</a>
+        <br/>
+        <br/>
+
+        <a class="nav-link active" aria-current="page" href="#app">الموقع</a>
+
+       
+      </nav>
+
+    <main id="app">
+
+        
+
+        <p>hello - مرحبا</p>
+        
+        <h1> تريد تشفير ام فك تشفير النص </h1>
+
+        <select id="select">
+
+            <option value="encode">تشفير النص</option>
+            <option value="decode">فك تشفير النص</option>
+        </select>
+
+
+        <h1 id="div">اكتب النص الذى تريد تشفيره اكتب نص انجليزى او ارقام فقط</h1>
+
+        <textarea id="text" placeholder=" اكتب هنا" style="cursor: text;"></textarea>
+
+        <p> Result - نتيجة</p>
+        <h1>الكلام بعد التشفير</h1>
+        <textarea id="result">
+
+                </textarea>
+
+    </main>
+
+    <div class="card">
+        <div style="text-align: center;" class="card-header">
+            حولنا
+        </div>
+    
+            <div class="card">
+                <h5 class="card-header">About</h5>
+                <div class="card-body">
+                  <h5 class="card-title">موقع لفك تشفير النص المشفر بنظام
+                    القاعدة 64 , او تشفيرها بنظام القاعدة 64</h5>
+                  <p class="card-text"> (تم انشاء الموقع بواسطة coderzizo@) </p>
+                  <a href="#app" class="btn btn-primary">الموقع</a>
+                </div>
+              </div>
+        </div>
+    </div>
+
+    <script>
+        // btoa() : يتم استخدامها لتشفير بيانات النصية إلى تشفير بنظام القاعدة64
+        // ----------------------------------------------------------------------------
+        // atob() : يتم استخدام هذا العنصر لفك تشفير نص مشفر بنظام قاعدة64
+
+        let text = "Coder Shiyar";
+        let encode_text = window.btoa(text);
+        let ad = document.getElementById("ad");
+        let decode_text = window.atob(encode_text);
+        let textt = document.getElementById("text");
+
+        let textarea = document.getElementById("text");
+        let result = document.getElementById("result");
+        let select = document.getElementById("select");
+
+        ad.onclick = () => {
+            alert("you click on about section")
+
+
+        };
+        textarea.addEventListener("input", () => {
+            make_result();
+
+        });
+        select.addEventListener("change", () => {
+            make_result();
+        });
+        function make_result() {
+
+            if (select.value == "decode") {
+                result.value = window.atob(textarea.value);
+            } else {
+                result.value = window.btoa(textarea.value);
+            }
+        }
+
+    </script>
+    
+
+    <style>
+        #div{
+            animation-name: app;
+        }
+        /* @keyframes app{
+            50% {background-color: green;}
+            100% {background-color: red;}
+        }
+        /* The animation code */
+        /* @keyframes example {
+            0% {
+                background-color: red;
+            }
+
+            25% {
+                background-color: yellow;
+            }
+
+            50% {
+                background-color: blue;
+            }
+
+            60% {
+                background-color: rgb(132, 16, 209);
+            }
+
+            80% {
+                background-color: rgb(98, 21, 150);
+            }
+
+            90% {
+                background-color: rgb(167, 6, 129);
+            }
+
+            100% {
+                background-color: rgb(250, 5, 5);
+            }
+
+        } */ */
+
+        /* The element to apply the animation to */
+        h1 {
+            position: relative;
+            background-color: red;
+            animation-name: example;
+            animation-duration: 4s;
+            animation-iteration-count: infinite;
+        }
+
+        #ad {
+            position: relative;
+            background-color: red;
+            animation-name: example;
+            animation-duration: 5.5s;
+            animation-iteration-count: infinite;
+        }
+
+        
+    </style>
+    <script src="https://code.jquery.com/jquery-3.5.1.slim.min.js"
+        integrity="sha384-DfXdz2htPH0lsSSs5nCTpuj/zy4C+OGpamoFVy38MVBnE+IbbVYUew+OrCXaRkfj"
+        crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js"
+        integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo"
+        crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"
+        integrity="sha384-OgVRvuATP1z7JjHLkuOU7Xw704+h835Lr+6QL9UvYjZE3Ipu6Tp75j7Bh/kR0JKI"
+        crossorigin="anonymous"></script>
+</body>
+
+</html>
